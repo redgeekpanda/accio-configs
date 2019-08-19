@@ -1,0 +1,4 @@
+[alias]
+cto = "!f() { git checkout --track origin/\"$1\"; }; f"
+[user]
+	email = redgeekpanda@gmail.com
