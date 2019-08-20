@@ -2,16 +2,12 @@
 
 !/configs/
 !/configs/*
-
 !/.gitconfig
 !/.gitignore
-!/.p10k.zsh
-!/.profile
-!/.Xresources
-!/.zshrc
 
-!/.i3/
-!/.i3/config
+!/.config/
+!/.config/kitty/
+!/.config/kitty/kitty.conf
 
 !/.config/
 !/.config/sublime-text-3/
@@ -21,3 +17,14 @@
 !/.config/sublime-text-3/Packages/User/Textile.sublime-settings
 !/.config/sublime-text-3/Packages/User/Bash.sublime-settings
 !/.config/sublime-text-3/Packages/User/Package Control.sublime-settings
+
+!/.i3/
+!/.i3/config
+
+!/.p10k.zsh
+
+!/.profile
+
+!/.Xresources
+
+!/.zshrc

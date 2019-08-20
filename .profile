@@ -4,6 +4,8 @@ export EDITOR=subl3
 export BROWSER=chromium
 
 if [[ -n ${DISPLAY} ]]; then
+  # Configure keyboard layouts
   setxkbmap us,ru,ua -option grp:alt_shift_toggle
-  # xinput set-prop 11 298 1
+  # Turn on Natural Scrolling
+  xinput set-prop 11 312 1
 fi

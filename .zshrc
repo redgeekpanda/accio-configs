@@ -128,7 +128,7 @@ load_nvm () {
   export NVM_DIR=~/.nvm
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-  nvm use > /dev/null
+  nvm use &> /dev/null
 }
 
 for cmd in "${NODE_GLOBALS[@]}"; do
@@ -145,5 +145,8 @@ done
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
 ################################################################################
+
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
 
 # zprof # Profiling
