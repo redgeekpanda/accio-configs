@@ -1,9 +1,11 @@
 *
 
-!/accio-configs/
-!/accio-configs/*
 !/.gitconfig
 !/.gitignore
+!/accio-configs/
+!/accio-configs/*
+!/accio-configs/external/*
+!/README.md
 
 !/.config/
 !/.config/kitty/
