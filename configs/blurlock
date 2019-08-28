@@ -11,7 +11,12 @@
 # # lock the screen
 # i3lock -i /tmp/screenshotblur.png
 
-i3lock-fancy-rapid 2 pixel
+(
+  CURRENT_LAYOUT_GROUP=$(xkb-switch -p) \
+  ; xkb-switch -s us \
+  ; i3lock-fancy-rapid 2 pixel -n \
+  ; xkb-switch -s $CURRENT_LAYOUT_GROUP
+  ) &
 
 # # sleep 1 adds a small delay to prevent possible race conditions with suspend
 sleep 1
