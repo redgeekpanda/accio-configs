@@ -7,9 +7,12 @@
 !/accio-configs/external/*
 !/README.md
 
+
 !/.config/
 !/.config/kitty/
 !/.config/kitty/kitty.conf
+
+!/.config/Lenovo_IdeaPad_720s-15IKB_81AC001AGE_N156HCE_EN1.icm
 
 !/.config/
 !/.config/sublime-text-3/

@@ -8,8 +8,8 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window none
-new_float none
+new_window 1pixel
+new_float 1pixel
 
 # Hide borders
 hide_edge_borders yes
@@ -35,10 +35,10 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+#bindsym $mod+d exec --no-startup-id dmenu_recency
 
 # launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
+#bindsym $mod+z exec --no-startup-id morc_menu
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -57,19 +57,19 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+#bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 #bindsym $mod+F2 exec palemoon
 #bindsym $mod+F3 exec pcmanfm
 #bindsym $mod+F3 exec ranger
 #bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
+#bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+#bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -183,39 +183,16 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
+ #assign [class="Pamac-manager"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable
 for_window [class="jetbrains-toolbox"] floating enable
+for_window [class="albert"] floating enable
+for_window [class="Pamac-manager"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -227,7 +204,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
@@ -275,6 +252,7 @@ bindsym $mod+9 exec --no-startup-id i3exit lock
 
 # Autostart applications
 exec --no-startup-id xrandr --output eDP1 --primary
+exec --no-startup-id xcalib -d :0 ~/.config/Lenovo_IdeaPad_720s-15IKB_81AC001AGE_N156HCE_EN1.icm
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
@@ -289,6 +267,7 @@ exec --no-startup-id xautolock -time 1 -locker i3exit lock
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id sbxkb
+exec_always --no-startup-id albert
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -421,4 +400,3 @@ smart_borders no_gaps
             #}
 
             # fix Chromium startup workspace
-            #for_window [class="^Chromium$"] move window to workspace 1
