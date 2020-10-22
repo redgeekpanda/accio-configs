@@ -20,6 +20,7 @@ export ZSH="/home/michael/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  docker-compose
   thefuck
   )
 
@@ -96,6 +97,7 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+################################################################################
 ########## History config ######################################################
 
 HISTSIZE=1000000
@@ -145,8 +147,36 @@ done
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
 ################################################################################
+########## Magic functions #####################################################
+
+alias "Шалость удалась!"="read -k1 -s && exit"
+
+################################################################################
+########## Nice 2 have stuff ###################################################
+
+export COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
+
+tgswitch () {
+  local tg_process_name='telegram-deskto'
+  local tg_desktop_name='telegramdesktop'
+
+  local tg_state=$(pgrep -x $tg_process_name > /dev/null && echo 1 || echo 2)
+
+  if [ $tg_state = 1 ]; then pkill -x $tg_process_name > /dev/null; fi
+
+  mv /home/michael/.local/share/TelegramDesktop /home/michael/.local/share/TelegramDesktop_temp
+  mv /home/michael/.local/share/TelegramDesktop2 /home/michael/.local/share/TelegramDesktop
+  mv /home/michael/.local/share/TelegramDesktop_temp /home/michael/.local/share/TelegramDesktop2
+
+  if [ $tg_state = 1 ]; then gtk-launch $tg_desktop_name > /dev/null; fi
+}
+
+################################################################################
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+# Completion for aws
+source /usr/bin/aws_zsh_completer.sh
 
 # zprof # Profiling

@@ -1,4 +1,6 @@
-[alias]
-cto = "!f() { git checkout --track origin/\"$1\"; }; f"
 [user]
 	email = redgeekpanda@gmail.com
+[core]
+	editor = subl3 -n -w
+[pull]
+	rebase = false

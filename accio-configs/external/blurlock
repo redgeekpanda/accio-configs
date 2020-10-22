@@ -1,7 +1,7 @@
-#!/bin/sh
+# !/bin/sh
 # /usr/bin/blurlock
 
-# take screenshot
+# # take screenshot
 # import -window root /tmp/screenshot.png
 
 # # blur it
@@ -11,14 +11,24 @@
 # # lock the screen
 # i3lock -i /tmp/screenshotblur.png
 
-(
-  CURRENT_LAYOUT_GROUP=$(xkb-switch -p) \
-  ; xkb-switch -s us \
-  ; i3lock-fancy-rapid 2 pixel -n \
-  ; xkb-switch -s $CURRENT_LAYOUT_GROUP
-  ) &
+# Exit if screen is already locked
+pgrep -x i3lock > /dev/null && exit 1
 
-# # sleep 1 adds a small delay to prevent possible race conditions with suspend
+# Save current keyboard language
+CURRENT_LAYOUT_GROUP=$(xkb-switch -p)
+
+# Сhange keyboard language to password language
+xkb-switch -s us
+
+# Lock asynchronous
+(
+  echo 1
+  i3lock-fancy-rapid 2 pixel -n
+  pkill -x i3lock
+  xkb-switch -s $CURRENT_LAYOUT_GROUP
+) &
+
+# Add small delay to prevent possible race conditions with suspend
 sleep 1
 
 exit 0
